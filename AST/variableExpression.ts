@@ -1,5 +1,5 @@
 import Expression from "./expression";
-import Variables from "./variables";
+import Block from "./block";
 
 export default class VariableExpression extends Expression {
   key: string;
@@ -8,7 +8,7 @@ export default class VariableExpression extends Expression {
     this.key = key;
   }
 
-  eval() {
-    return Variables.getVariable(this.key)
+  eval(context: Block) {
+    return context.getArg(this.key);
   }
 }

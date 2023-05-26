@@ -1,4 +1,6 @@
+import Block from "./block";
+
 export default abstract class Expression{
 
-  eval(): any{}
+  eval(context: Block): any{}
 }

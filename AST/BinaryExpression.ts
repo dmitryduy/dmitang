@@ -1,4 +1,5 @@
 import Expression from "./expression";
+import Block from "./block";
 
 export default class BinaryExpression extends Expression {
   operator: string;
@@ -11,19 +12,19 @@ export default class BinaryExpression extends Expression {
     this.expr2 = expr2;
   }
 
-  eval() {
+  eval(context: Block) {
     switch (this.operator) {
       case '+':
-        return this.expr1.eval() + this.expr2.eval();
+        return this.expr1.eval(context) + this.expr2.eval(context);
       case '-':
-        return this.expr1.eval() - this.expr2.eval();
+        return this.expr1.eval(context) - this.expr2.eval(context);
       case '*':
-        return this.expr1.eval() * this.expr2.eval();
+        return this.expr1.eval(context) * this.expr2.eval(context);
       case '/':
-        if (this.expr2.eval() === 0) {
+        if (this.expr2.eval(context) === 0) {
           throw new Error('Делить на ноль нельзя');
         }
-        return this.expr1.eval() / this.expr2.eval();
+        return this.expr1.eval(context) / this.expr2.eval(context);
     }
   }
 }

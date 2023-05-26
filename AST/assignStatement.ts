@@ -1,18 +1,18 @@
 import Statement from "./statement";
 import Expression from "./expression";
-import Variables from "./variables";
+import Block from "./block";
 
 export default class AssignStatement extends Statement {
   expression: Expression;
   variable: string;
 
   constructor(variable: string, expression: Expression) {
-    super();
+    super('assign');
     this.expression = expression;
     this.variable = variable;
   }
 
-  execute() {
-    Variables.setVariable(this.variable, this.expression.eval());
+  execute(context: Block) {
+    context.setArg(this.variable, this.expression.eval(context));
   }
 }

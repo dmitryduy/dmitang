@@ -11,7 +11,10 @@ export const enum TokenType {
   ASSIGN='ASSIGN',
   LPAREN='LPAREN',
   RPAREN='RPAREN',
-  STRING='STRING'
+  STRING='STRING',
+  COMMA='COMMA',
+  LBRACE='LBRACE',
+  RBRACE='RBRACE'
 }
 
 export default class Token {
